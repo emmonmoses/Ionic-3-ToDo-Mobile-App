@@ -1,0 +1,109 @@
+<!doctype html>
+<ion-header>
+  <!-- <ion-buttons start>
+    <button ion-button icon-only menuToggle color="primary">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-buttons> -->
+  <ion-navbar primary>
+    <ion-title>
+      <ion-icon name="list-box"></ion-icon>&nbsp;Todos
+    </ion-title>
+  </ion-navbar>
+  <ion-fab top right>
+    <button ion-fab mini color="danger" (click)="logOut()">
+      <ion-icon name="md-log-out"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="task">
+      <ion-segment-button value="all">All</ion-segment-button>
+      <ion-segment-button value="Complete">Complete</ion-segment-button>
+      <ion-segment-button value="InComplete">Incomplete</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Search a task" [(ngModel)]="searchText" (ionInput)="searchTask()"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="task"  style="margin-top: 4.5%">
+
+    <ng-container *ngFor="let task of taskS">
+      <ng-container *ngIf="task.UserID == user.ID">
+        <ion-list *ngSwitchCase="'all'">
+          <ion-item-sliding>
+            <ion-item>
+              <!-- <ion-toggle [(ngModel)]="task.Status" (tap)="updateStatus(task)">
+              </ion-toggle> -->
+              <ion-label (tap)="presentActionSheet(task)">
+                <h2 [ngClass]="task.Status.toString()">{{task.Task}}</h2>
+                <p [ngClass]="task.Priority">{{task.Priority}}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item-options>
+              <button primary (click)="editModal(task)">
+                <ion-icon name="create" color="secondary"></ion-icon>Edit</button>
+              <button danger (click)="deleteConfirm(task)">
+                <ion-icon name="trash" color="danger"></ion-icon>Delete</button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngFor="let task of taskS">
+      <ng-container *ngIf="task.Status==true && task.UserID == user.ID">
+        <ion-list *ngSwitchCase="'Complete'">
+          <ion-item-sliding>
+            <ion-item>
+              <ion-toggle [(ngModel)]="task.Status" (click)="updateStatus(task)">
+              </ion-toggle>
+              <ion-label (tap)="presentActionSheet(task)">
+                <h2 [ngClass]="task.Status.toString()">{{task.Task}}</h2>
+                <p [ngClass]="task.Priority">{{task.Priority}}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item-options>
+              <button primary (click)="editModal(task)">
+                <ion-icon name="create" color="secondary"></ion-icon>Edit</button>
+              <button danger (click)="deleteConfirm(task)">
+                <ion-icon name="trash" color="danger"></ion-icon>Delete</button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngFor="let task of taskS">
+      <ng-container *ngIf="task.Status==false && task.UserID == user.ID">
+        <ion-list *ngSwitchCase="'InComplete'">
+          <ion-item-sliding>
+            <ion-item>
+              <ion-toggle [(ngModel)]="task.Status" (click)="updateStatus(task)">
+              </ion-toggle>
+              <ion-label (tap)="presentActionSheet(task)">
+                <h2 [ngClass]="task.Status.toString()">{{task.Task}}</h2>
+                <p [ngClass]="task.Priority">{{task.Priority}}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item-options>
+              <button primary (click)="editModal(task)">
+                <ion-icon name="create" color="secondary"></ion-icon>Edit</button>
+              <button danger (click)="deleteConfirm(task)">
+                <ion-icon name="trash" color="danger"></ion-icon>Delete</button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ng-container>
+    </ng-container>
+
+    <ion-fab bottom left>
+      <button ion-fab mini color="primary" (click)="addtask()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+
+  </div>
+</ion-content>

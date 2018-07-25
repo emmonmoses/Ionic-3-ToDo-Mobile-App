@@ -1,0 +1,23 @@
+<!doctype html>
+<ion-header>
+    <ion-navbar>
+        <ion-title><ion-icon name="contacts"></ion-icon>&nbsp;Registration</ion-title>
+      </ion-navbar>
+</ion-header>
+<ion-content padding center text-center>
+   <!--  <ion-card>
+        <img src="../../assets/imgs/register.jpg" />
+    </ion-card><br/> -->
+    <div style="margin-top: 42%;margin-bottom: 25%">
+    <ion-list>
+        <ion-item>
+          <ion-input [(ngModel)]="user.FullName" name="username" placeholder="Type your username"></ion-input>
+        </ion-item>
+        <ion-item style="margin-top: 5%">
+          <ion-input [(ngModel)]="user.Secret_Key" type="password" name="Password" placeholder="Type your password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <button ion-button round full (click)="onSubmit()" color="primary">Sign Up</button><br>
+      <button ion-button round full (click)="redirectLogin()" color="light">Cancel</button>
+    </div>
+</ion-content>

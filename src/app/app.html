@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<div *ngIf="showSplash" class="splash">
+  <div class="spinner"></div>
+</div>
+
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-navbar>
+      <ion-title>Menu</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="addtask()">
+        <ion-icon name="add-circle"></ion-icon>&nbsp;Add Task
+      </button>
+      <button ion-item (click)="editProfile()">
+        <ion-icon name="contact"></ion-icon>&nbsp;Edit Profile
+      </button>
+      <button ion-item (click)="logOut()">
+        <ion-icon name="log-out"></ion-icon>&nbsp;Sign Out
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

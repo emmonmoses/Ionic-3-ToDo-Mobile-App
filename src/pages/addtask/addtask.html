@@ -1,0 +1,37 @@
+<!doctype html>
+<ion-header>
+  <ion-toolbar primary>
+    <ion-title>
+      <ion-icon name="add-circle"></ion-icon>&nbsp;New Task
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list style="margin-top: 50%">
+      <ion-item>
+        <ion-label stacked>Description</ion-label>
+        <ion-input type="text" [(ngModel)]="task.Task" name="TaskName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Priority</ion-label>
+        <ion-select [(ngModel)]="task.Priority" name="TaskPriority">
+          <ion-option value="high">High</ion-option>
+          <ion-option value="normal">Normal</ion-option>
+          <ion-option value="low">Low</ion-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+    <div padding>
+      <button ion-button full round (click)="addTask()" color="primary">Add</button>
+    </div>
+    <ion-fab top right edge>
+      <button ion-fab mini color="danger" (click)="goBack()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-fab>
+
+</ion-content>
