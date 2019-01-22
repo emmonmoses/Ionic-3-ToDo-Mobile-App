@@ -10,9 +10,9 @@ This project was generated with [Ionic CLI](https://ionicframework.com/docs/cli/
 
 Start the server using command -  `ionic serve(for browser view)` or `ionic lab(for mobile view)`.
 
-## Steps to setup Ionic project 
+## Steps to setup ToDo App 
 
-1. Create an Ionic CLI project
+1. Open the downloaded Todo App project
 2. Install below mentioned packages
 
     i. npm install --save bootstrap@4.0.0-beta
